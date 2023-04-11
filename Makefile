@@ -7,6 +7,7 @@
 
 
 _SRC =			main.c \
+				split_str.c\
 
 SRCDIR = 		src/
 
