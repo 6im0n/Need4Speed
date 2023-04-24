@@ -24,7 +24,6 @@ static void forward(main_t *main, float speed)
 //     printf("WHEELS_DIR:%f\n", direction);
 //     main->direction = direction;
 // }
-
 static void get_info(main_t *main)
 {
     if (clock() - main->clock > 10000)
