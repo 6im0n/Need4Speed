@@ -7,15 +7,16 @@
 
 #include "n4s.h"
 
-static void forward(main_t *main, float speed)
+static void forward(main_t *main)
 {
-    if (speed == main->speed)
+    if (main->speed == main->old_speed)
         return;
     fflush(stdout);
-    printf("CAR_FORWARD:%.1f\n", speed);
-    dprintf(2,"CAR_FORWARD:%.1f\n", speed);
-    main->speed = speed;
+    printf("CAR_FORWARD:%.1f\n", main->speed);
+    dprintf(2,"CAR_FORWARD:%.1f\n", main->speed);
+    main->old_speed = main->speed;
 }
+
 
 // void turn(main_t *main, float direction)
 // {
@@ -46,12 +47,13 @@ int main(void)
 {
     main_t main;
     main.clock = 0;
+    main.speed = 0.1;
     write(1,"START_SIMULATION\n", 17);
     dprintf(2,"START_SIMULATION\n");
     sleep(1);
     while (1) {
         fflush(stdout);
-        forward(&main, 0.5);
+        forward(&main);
         sleep(0.4);
         get_info(&main);
         sleep(0.4);

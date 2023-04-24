@@ -13,6 +13,7 @@
 
 typedef struct main_s {
     float speed;
+    float old_speed;
     int direction;
     int stoped;
     char **lidar;
@@ -22,5 +23,7 @@ typedef struct main_s {
 char **split_str(char *input, char delimiter);
 
 void stop(main_t *main);
+
+void update_speed(main_t *main);
 
 void stop_car_distance(main_t *main, float distance);
