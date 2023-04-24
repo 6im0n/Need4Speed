@@ -71,7 +71,7 @@ int main(void)
         get_info(&main);
         update_speed(&main);
         sleep(0.4);
-        stop_car_distance(&main, 450);
+        stop_car_distance(&main, 100);
         if (main.stoped == 1){
             stop(&main);
             sleep(5);
