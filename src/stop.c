@@ -7,7 +7,7 @@
 
 #include "n4s.h"
 
-static int len_of_array(char **array)
+int len_of_array(char **array)
 {
     int i = 0;
     while (array[i] != NULL){

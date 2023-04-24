@@ -26,4 +26,6 @@ void stop(main_t *main);
 
 void update_speed(main_t *main);
 
+int len_of_array(char **array);
+
 void stop_car_distance(main_t *main, float distance);
