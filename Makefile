@@ -18,14 +18,12 @@ INC = 			-I./include -I.
 
 CFLAGS 	=		-W -Wall -Wextra -Werror -g
 
-MODULES = -l csfml-graphics -l csfml-window -l csfml-audio -l csfml-system -lm
-
 NAME = 			ai
 
 all: 			$(NAME) clean
 
 $(NAME):
-				@gcc -o $(NAME) $(SRC) $(INC) $(MODULES) $(CFLAGS)
+				@gcc -o $(NAME) $(SRC) $(INC) $(CFLAGS)
 				@$(MAKE) clean -s
 
 clean:
