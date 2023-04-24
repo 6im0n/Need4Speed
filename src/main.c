@@ -46,10 +46,14 @@ static void get_info(main_t *main)
     main->lidar = split_str(line, ':');
 }
 
-static void start_simulation(void)
+static void start_simulation(main_t *main)
 {
+    main->clock = 0;
+    main->speed = 0.2;
+    main->old_speed = 0;
     size_t n = 0;
     char *buffer = NULL;
+
     fflush(stdout);
     dprintf(2,"START_SIMULATION\n");
     dprintf(1,"START_SIMULATION\n");
@@ -59,10 +63,7 @@ static void start_simulation(void)
 int main(void)
 {
     main_t main;
-    main.clock = 0;
-    main.speed = 0.2;
-    main.old_speed = 0;
-    start_simulation();
+    start_simulation(&main);
     sleep(1);
     while (1) {
         fflush(stdout);

@@ -11,11 +11,12 @@ static float get_distance(main_t *main)
 {
     if (len_of_array(main->lidar) < 15)
         return main->speed;
-    float distance = atof(main->lidar[14]);
+    float distance = atof(main->lidar[17]);
     if (distance < 400)
         main->speed = 0.1;
     return distance;
 }
+
 void update_speed(main_t *main)
 {
     float distance = get_distance(main);
