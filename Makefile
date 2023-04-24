@@ -10,6 +10,8 @@ _SRC =			main.c \
 				stop.c\
 				split_str.c\
 				update_speed.c\
+				update_angle.c\
+				turn.c\
 
 SRCDIR = 		src/
 

@@ -20,25 +20,13 @@ static void forward(main_t *main)
     main->old_speed = main->speed;
 }
 
-// void turn(main_t *main, float direction)
-// {
-//     if (direction == main->direction)
-//         return;
-//     printf("WHEELS_DIR:%f\n", direction);
-//     main->direction = direction;
-// }
 static void get_info(main_t *main)
 {
-    if (clock() - main->clock > 10000)
-        main->clock = clock();
-    else {
-        return;
-    }
     char *line = NULL;
     size_t len = 0;
     int read = 0;
     fflush(stdout);
-    dprintf(2, "GET_INFO_LIDAR\n");
+    dprintf(2, "#GET_INFO_LIDAR\n");
     dprintf(1, "GET_INFO_LIDAR\n");
     read = getline(&line, &len, stdin);
     if (read == -1)
@@ -48,14 +36,16 @@ static void get_info(main_t *main)
 
 static void start_simulation(main_t *main)
 {
-    main->clock = 0;
     main->speed = 0.2;
     main->old_speed = 0;
+    main->angle = 0;
+    main->old_angle = 0;
+    main->direction = 0;
     size_t n = 0;
     char *buffer = NULL;
 
     fflush(stdout);
-    dprintf(2,"START_SIMULATION\n");
+    dprintf(2,"#START_SIMULATION\n");
     dprintf(1,"START_SIMULATION\n");
     getline(&buffer, &n, stdin);
 }
@@ -64,17 +54,17 @@ int main(void)
 {
     main_t main;
     start_simulation(&main);
-    sleep(1);
     while (1) {
         fflush(stdout);
         forward(&main);
-        sleep(0.4);
         get_info(&main);
         update_speed(&main);
-        sleep(0.4);
+        update_angle(&main);
+        turn(&main);
         stop_car_distance(&main, 100);
         if (main.stoped == 1){
             stop(&main);
+            dprintf(2, "#STOP_SIMULATION\n");
             sleep(5);
             break;
         }
