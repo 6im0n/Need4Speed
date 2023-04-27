@@ -10,8 +10,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <time.h>
+#include <string.h>
 
-typedef struct main_s {
+typedef struct car_s {
     float speed;
     float old_speed;
     float angle;
@@ -19,18 +20,22 @@ typedef struct main_s {
     float direction;
     int stoped;
     char **lidar;
-} main_t;
+} car_t;
 
 char **split_str(char *input, char delimiter);
 
-void stop(main_t *main);
+void stop(car_t *car);
 
-void update_speed(main_t *main);
+void forward(car_t *car);
+
+int track_cleared(car_t *car);
+
+void update_speed(car_t *car);
 
 int len_of_array(char **array);
 
-void turn(main_t *main);
+void turn(car_t *car);
 
-void update_angle(main_t *main);
+void update_angle(car_t *car);
 
-void stop_car_distance(main_t *main, float distance);
+void stop_car_distance(car_t *car, float distance);

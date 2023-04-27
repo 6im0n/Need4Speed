@@ -7,44 +7,33 @@
 
 #include "n4s.h"
 
-static void forward(main_t *main)
+static void init_struct(car_t *car)
 {
-    size_t n = 0;
-    char *buffer = NULL;
-    if (main->speed == main->old_speed)
-        return;
-    fflush(stdout);
-    dprintf(2, "CAR_FORWARD:%.1f\n", main->speed);
-    dprintf(1, "CAR_FORWARD:%.1f\n", main->speed);
-    getline(&buffer, &n, stdin);
-    main->old_speed = main->speed;
+    car->speed = 0.5;
+    car->old_speed = 0;
+    car->angle = 0;
+    car->old_angle = 0;
+    car->direction = 0;
 }
 
-static void get_info(main_t *main)
+static void get_info(car_t *car)
 {
     char *line = NULL;
     size_t len = 0;
     int read = 0;
-    fflush(stdout);
     dprintf(2, "#GET_INFO_LIDAR\n");
     dprintf(1, "GET_INFO_LIDAR\n");
     read = getline(&line, &len, stdin);
     if (read == -1)
         exit(84);
-    main->lidar = split_str(line, ':');
+    car->lidar = split_str(line, ':');
 }
 
-static void start_simulation(main_t *main)
+static void start_simulation(void)
 {
-    main->speed = 0.2;
-    main->old_speed = 0;
-    main->angle = 0;
-    main->old_angle = 0;
-    main->direction = 0;
     size_t n = 0;
     char *buffer = NULL;
 
-    fflush(stdout);
     dprintf(2,"#START_SIMULATION\n");
     dprintf(1,"START_SIMULATION\n");
     getline(&buffer, &n, stdin);
@@ -52,18 +41,17 @@ static void start_simulation(main_t *main)
 
 int main(void)
 {
-    main_t main;
-    start_simulation(&main);
+    car_t car;
+    init_struct(&car);
+    start_simulation();
     while (1) {
-        fflush(stdout);
-        forward(&main);
-        get_info(&main);
-        update_speed(&main);
-        update_angle(&main);
-        turn(&main);
-        stop_car_distance(&main, 100);
-        if (main.stoped == 1){
-            stop(&main);
+        get_info(&car);
+        update_speed(&car);
+        update_angle(&car);
+        forward(&car);
+        turn(&car);
+        track_cleared(&car);
+        if (car.stoped == 1){
             dprintf(2, "#STOP_SIMULATION\n");
             sleep(5);
             break;

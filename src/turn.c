@@ -7,15 +7,14 @@
 
 #include "n4s.h"
 
-void turn(main_t *main)
+void turn(car_t *car)
 {
     size_t n = 0;
     char *buffer = NULL;
-    if (main->angle == main->old_angle)
+    if (car->angle == car->old_angle)
         return;
-    fflush(stdout);
-    dprintf(2, "WHEELS_DIR:%.2f\n", main->angle);
-    dprintf(1, "WHEELS_DIR:%.2f\n", main->angle);
+    dprintf(2, "WHEELS_DIR:%.2f\n", car->angle);
+    dprintf(1, "WHEELS_DIR:%.2f\n", car->angle);
     getline(&buffer, &n, stdin);
-    main->old_angle = main->angle;
+    car->old_angle = car->angle;
 }

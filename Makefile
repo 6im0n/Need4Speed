@@ -12,6 +12,7 @@ _SRC =			main.c \
 				update_speed.c\
 				update_angle.c\
 				turn.c\
+				forward.c\
 
 SRCDIR = 		src/
 
