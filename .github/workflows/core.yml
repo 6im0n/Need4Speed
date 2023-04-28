@@ -12,7 +12,6 @@ jobs:
     uses: ./.github/workflows/norm.yml
 
   ckeck-basic:
-    needs: [ check-norme ]
     uses: ./.github/workflows/check.yml
     with:
       executables: "ai"
