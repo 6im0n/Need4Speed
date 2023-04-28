@@ -28,7 +28,6 @@ static void fail(car_t *car)
     if (dis_f < 100 || dis_r < 100 || dis_l < 100){
         car->angle = -(car->angle);
         turn(car);
-        dprintf(2, "#CAR_BACKWARDS\n");
         dprintf(1, "CAR_BACKWARDS:0.3\n");
         getline(&buffer, &n, stdin);
         car->speed = -0.5;
@@ -54,7 +53,6 @@ static void start_simulation(void)
     char *buffer = NULL;
     int read = 0;
 
-    dprintf(2,"#START_SIMULATION\n");
     dprintf(1,"START_SIMULATION\n");
     read = getline(&buffer, &n, stdin);
     if (read == -1)
@@ -74,8 +72,10 @@ int main(void)
         forward(&car);
         turn(&car);
         track_cleared(&car);
+        tools(&car);
+        display_info(&car);
         if (car.stoped == 1){
-            dprintf(2, "#STOP_SIMULATION\n");
+            dprintf(2, "\e[1;31mSTOP_SIMULATION\e[0m\n");
             sleep(5);
             break;
         }

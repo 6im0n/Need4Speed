@@ -13,7 +13,6 @@ void turn(car_t *car)
     char *buffer = NULL;
     if (car->angle == car->old_angle)
         return;
-    dprintf(2, "WHEELS_DIR:%.2f\n", car->angle);
     dprintf(1, "WHEELS_DIR:%.2f\n", car->angle);
     getline(&buffer, &n, stdin);
     car->old_angle = car->angle;

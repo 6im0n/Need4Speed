@@ -13,6 +13,8 @@ _SRC =			main.c \
 				update_angle.c\
 				turn.c\
 				forward.c\
+				tools.c\
+				displayer.c\
 
 SRCDIR = 		src/
 

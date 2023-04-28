@@ -18,12 +18,13 @@ typedef struct vector2f_s {
 } vector2f_t;
 
 typedef struct car_s {
+    int stoped;
+    int display_speed;
     float speed;
     float old_speed;
     float angle;
     float old_angle;
     float direction;
-    int stoped;
     char **lidar;
 } car_t;
 
@@ -42,5 +43,9 @@ int len_of_array(char **array);
 void turn(car_t *car);
 
 void update_angle(car_t *car);
+
+void tools(car_t *car);
+
+void display_info(car_t *car);
 
 void stop_car_distance(car_t *car, float distance);

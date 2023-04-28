@@ -43,8 +43,7 @@ void stop(car_t *car)
     size_t n = 0;
     char *buffer = NULL;
 
-    write(1,"CAR_BACKWARDS:0\n", 16);
-    dprintf(2,"CAR_FORWARD:0\n");
+    dprintf(1,"CAR_BACKWARDS:0\n");
     getline(&buffer, &n, stdin);
     dprintf(1, "stop_simulation\n");
     car->speed = 0;
