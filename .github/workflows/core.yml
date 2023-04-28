@@ -12,7 +12,7 @@ jobs:
     uses: ./.github/workflows/norm.yml
 
   ckeck-basic:
-    need [ check-norme ]
+    needs: [ check-norme ]
     uses: ./.github/workflows/check.yml
     with:
       executables: "ai"
