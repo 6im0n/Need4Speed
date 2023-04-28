@@ -12,6 +12,11 @@
 #include <time.h>
 #include <string.h>
 
+typedef struct vector2f_s {
+    float left;
+    float right;
+} vector2f_t;
+
 typedef struct car_s {
     float speed;
     float old_speed;
