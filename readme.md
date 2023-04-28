@@ -5,8 +5,9 @@
 
 Algorithm for an automous car in C, using CoppeliaSim.
 
-<a>https://www.coppeliarobotics.com/files/CoppeliaSim_Edu_V4_3_0_Ubuntu20_04.tar.xz</a>
+copelia : <a>https://www.coppeliarobotics.com/files/CoppeliaSim_Edu_V4_3_0_Ubuntu20_04.tar.xz</a>
 
+link to the PDF : https://intra.epitech.eu/module/2022/B-AIA-200/NAN-2-1/acti-592362/project/#!/group
 ---
 
 ### :pencil: CoppeliaSim description :
