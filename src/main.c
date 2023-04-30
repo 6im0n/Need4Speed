@@ -19,8 +19,6 @@ static void get_info(car_t *car)
 
 static void fail(car_t *car)
 {
-    size_t n = 0;
-    char *buffer = NULL;
     float dis_f = atof(car->lidar[17]);
     float dis_r = atof(car->lidar[3]);
     float dis_l = atof(car->lidar[31]);
@@ -29,7 +27,7 @@ static void fail(car_t *car)
         car->angle = -(car->angle);
         turn(car);
         dprintf(1, "CAR_BACKWARDS:0.3\n");
-        getline(&buffer, &n, stdin);
+        verif();
         car->speed = -0.5;
         car->angle = -(car->angle);
         get_info(car);
@@ -53,8 +51,10 @@ static void start_simulation(void)
     char *buffer = NULL;
     int read = 0;
 
+    dprintf(2, "\e[1;33mWait app load ...\e[0m\n");
     dprintf(1,"START_SIMULATION\n");
     read = getline(&buffer, &n, stdin);
+    verif_start(buffer);
     if (read == -1)
         exit(84);
 }
@@ -75,7 +75,7 @@ int main(void)
         tools(&car);
         display_info(&car);
         if (car.stoped == 1){
-            dprintf(2, "\e[1;31mSTOP_SIMULATION\e[0m\n");
+            dprintf(2, "\e[1;31mSimulation Stoped !\e[0m\n");
             sleep(5);
             break;
         }

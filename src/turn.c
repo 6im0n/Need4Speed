@@ -9,11 +9,9 @@
 
 void turn(car_t *car)
 {
-    size_t n = 0;
-    char *buffer = NULL;
     if (car->angle == car->old_angle)
         return;
     dprintf(1, "WHEELS_DIR:%.2f\n", car->angle);
-    getline(&buffer, &n, stdin);
+    verif();
     car->old_angle = car->angle;
 }

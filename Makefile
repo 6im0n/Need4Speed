@@ -15,6 +15,7 @@ _SRC =			main.c \
 				forward.c\
 				tools.c\
 				displayer.c\
+				verif.c\
 
 SRCDIR = 		src/
 

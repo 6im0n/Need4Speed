@@ -40,11 +40,8 @@ int track_cleared(car_t *car)
 
 void stop(car_t *car)
 {
-    size_t n = 0;
-    char *buffer = NULL;
-
     dprintf(1,"CAR_BACKWARDS:0\n");
-    getline(&buffer, &n, stdin);
+    verif();
     dprintf(1, "stop_simulation\n");
     car->speed = 0;
     car->stoped = 1;

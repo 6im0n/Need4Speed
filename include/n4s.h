@@ -30,6 +30,10 @@ typedef struct car_s {
 
 char **split_str(char *input, char delimiter);
 
+void verif_start(char *error);
+
+void verif(void);
+
 void stop(car_t *car);
 
 void forward(car_t *car);

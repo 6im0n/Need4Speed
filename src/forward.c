@@ -9,11 +9,9 @@
 
 void forward(car_t *car)
 {
-    size_t n = 0;
-    char *buffer = NULL;
     if (car->speed == car->old_speed)
         return;
     dprintf(1, "CAR_FORWARD:%.2f\n", car->speed);
-    getline(&buffer, &n, stdin);
+    verif();
     car->old_speed = car->speed;
 }

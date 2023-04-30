@@ -9,6 +9,6 @@
 //pb norme
 void display_info(car_t *car)
 {
-    dprintf(2, "\e[1;32m Speed:\e[0m %d \e[1;32m Km/H\e[0m\r",
+    dprintf(2, "\e[1;32m    Speed:\e[0m %d\e[1;32m Km/H\e[0m\n",
     car->display_speed);
 }
