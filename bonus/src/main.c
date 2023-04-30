@@ -51,7 +51,7 @@ static void start_simulation(void)
     char *buffer = NULL;
     int read = 0;
 
-    dprintf(2, "Wait app load ...\n");
+    dprintf(2, "\e[1;33mWait app load ...\e[0m\n");
     dprintf(1,"START_SIMULATION\n");
     read = getline(&buffer, &n, stdin);
     verif_start(buffer);
@@ -75,7 +75,7 @@ int main(void)
         tools(&car);
         display_info(&car);
         if (car.stoped == 1){
-            dprintf(2, "Simulation Stoped !\n");
+            dprintf(2, "\e[1;31mSimulation Stoped !\e[0m\n");
             sleep(5);
             break;
         }

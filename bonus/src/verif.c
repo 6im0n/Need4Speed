@@ -13,10 +13,10 @@ void verif_start(char *error)
 
     switch (atoi(tab[0])) {
     case 1:
-        dprintf(2, "Simulation Started !\n");
+        dprintf(2, "\e[1;33mSimulation Started !\e[0m\n");
         break;
     default:
-        dprintf(2, "\e[1;33mError: %s\e[0m\n", tab[2]);
+        dprintf(2, "Error: %s\n", tab[2]);
         break;
     }
     free(tab);
@@ -32,6 +32,6 @@ void verif(void)
     if (atoi(tab[0]) == 1)
         return;
     else
-        dprintf(2, "\e[1;33mError: %s\e[0m\n", tab[2]);
+        dprintf(2, "Error: %s\n", tab[2]);
     free(tab);
 }
